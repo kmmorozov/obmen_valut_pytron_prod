@@ -1,3 +1,5 @@
+import time
+
 from fastapi import FastAPI
 app = FastAPI()
 import pymysql
@@ -27,3 +29,8 @@ def get_valute_rate(valute_name):
     print(valute_name, connection, cursor)
     rate = get_valute_rate_from_db(connection,cursor,valute_name)
     return {valute_name:rate}
+
+@app.get("/convert")
+def convert_valute(fv,sv,count):
+    return fv, sv, count
+
