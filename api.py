@@ -1,4 +1,5 @@
 import time
+import pymysql
 
 from fastapi import FastAPI
 app = FastAPI()
