@@ -1,5 +1,6 @@
 import time
 import pymysql
+import redis
 
 from fastapi import FastAPI
 app = FastAPI()
