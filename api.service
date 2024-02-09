@@ -1,0 +1,15 @@
+[Unit]
+Description=Api server_general
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/astms
+ExecStart=/usr/local/bin/uvicorn api_server_general:app  --host 0.0.0.0 --port 8070 --log-level warning
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
