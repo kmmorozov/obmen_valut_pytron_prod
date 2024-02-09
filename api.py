@@ -21,7 +21,7 @@ def connect_to_db():
 
 @app.get("/")
 def root():
-    return 'привет'
+    return 'HI!'
 @app.get("/users")
 def users():
     return ('kirill', 'ivan','pavel','sergey')
