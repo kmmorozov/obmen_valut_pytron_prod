@@ -31,8 +31,13 @@ def get_valute_rate(valute_name):
     print(valute_name, connection, cursor)
     rate = get_valute_rate_from_db(connection,cursor,valute_name)
     return {valute_name:rate}
-
+#http://127.0.0.1:8000/convert/?fv=USD&sv=EUR&vcount=1000
 @app.get("/convert")
-def convert_valute(fv,sv,count):
-    return fv, sv, count
+def convert_valute(fv,sv,vcount):
+    connection, cursor = connect_to_db()
+    fv_rate = get_valute_rate_from_db(connection, cursor, fv)
+    sv_rate = get_valute_rate_from_db(connection,cursor,sv)
+
+    OUTVALUTE_COUNT = round((float(vcount) * fv_rate) / sv_rate, 2)
+    return  OUTVALUTE_COUNT
 
