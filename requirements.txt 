@@ -1,4 +1,4 @@
-redis==5.0.1
+redis
 pymysql
 uvicorn
 requests
